@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import toast from "react-hot-toast";
 import { X } from "lucide-react";
 
 import IconButton from "@/components/ui/icon-button";
@@ -13,7 +12,7 @@ interface CartItemProps {
     data: Product;
 }
 
-const cartItem: React.FC<CartItemProps> = ({data}) => {
+const CartItem: React.FC<CartItemProps> = ({data}) => {
     const cart = useCart()
 
     const onRemove = () => {
@@ -51,5 +50,5 @@ const cartItem: React.FC<CartItemProps> = ({data}) => {
   )
 }
 
-export default cartItem
+export default CartItem
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { Product } from '@/types'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Currency from './ui/currency'
 import Button from './ui/button'
 import { ShoppingCartIcon } from 'lucide-react'
