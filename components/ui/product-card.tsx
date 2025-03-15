@@ -50,7 +50,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                         <IconButton
                             onClick={onPreview}
                             icon={<Expand size={20} className='text-gray-600' />}
-
                         />
                         <IconButton
                             onClick={onAddToCart}
