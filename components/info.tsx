@@ -11,17 +11,13 @@ interface InfoProps {
     data: Product
 }
 
-const addItemCart = () => {
-    cart.addItem(data)
-}
-
 const Info: React.FC<InfoProps> = ({ data }) => {
     const cart = useCart()
 
     const addItemCart = () => {
         cart.addItem(data)
     }
-    
+
     return (
         <div>
             <h1 className='text-3xl font-bold text-gray-900'>{data.name}</h1>
