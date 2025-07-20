@@ -36,7 +36,6 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
-import NoValidApi from "./ui/no-valid-api";
 
 interface BillboardProps {
   data: BillboardType[]

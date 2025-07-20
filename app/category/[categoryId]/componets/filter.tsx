@@ -17,12 +17,12 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
 
-    if (!data.length) return <NoValidApi />
-    
     const searchParams = useSearchParams()
     const router = useRouter()
-
+    
     const selectedValue = searchParams.get(valueKey)
+    
+    if (!data.length) return <NoValidApi />
 
     const onClick = (id: string) => {
         const current = qs.parse(searchParams.toString())
