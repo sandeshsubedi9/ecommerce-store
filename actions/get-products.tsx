@@ -1,7 +1,10 @@
+
+
 import { Product } from "@/types";
 import qs from "query-string"
+import { getApiUrlFromCookie } from "./get-apiUrl-from-cookie";
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`
+// const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`
 
 interface Query{
     categoryId?: string;
@@ -11,6 +14,16 @@ interface Query{
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
+
+    // const apiUrl  = useApi()
+    const apiUrl = await getApiUrlFromCookie()
+    
+    if (!apiUrl) {
+        return []
+    }
+
+    const URL = `${apiUrl}/products`
+
     const url = qs.stringifyUrl({
         url: URL,
         query: {

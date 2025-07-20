@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import qs from 'query-string'
 
 import { Color, Size } from '@/types'
-import Button from '@/components/ui/button'
+import Button from '@/components/ui/our-button'
 import { cn } from '@/lib/util'
 
 interface FilterProps {

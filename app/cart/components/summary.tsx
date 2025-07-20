@@ -2,16 +2,16 @@
 
 import axios from "axios"
 import Currency from "@/components/ui/currency"
-import Button from "@/components/ui/button"
+import Button from "@/components/ui/our-button"
 import useCart from "@/hooks/use-cart"
 import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 
 const Summary = () => {
     const searchParams = useSearchParams()
-    const items = useCart((state)=>state.items)
-    const removeAll = useCart((state)=>state.removeAll)
+    const items = useCart((state) => state.items)
+    const removeAll = useCart((state) => state.removeAll)
 
     useEffect(() => {
         if (searchParams.get('success')) {
@@ -24,16 +24,32 @@ const Summary = () => {
         }
     }, [searchParams, removeAll])
 
+    const [apiUrl, setApiUrl] = useState('');
+
+    useEffect(() => {
+        const fetchApiUrl = async () => {
+            try {
+                const res = await axios.get('/api/get-api-url');
+                setApiUrl(res.data.apiUrl); // ✅ assuming JSON: { apiUrl: "..." }
+
+            } catch (error) {
+                console.error('Failed to fetch apiUrl:', error);
+            }
+        };
+
+        fetchApiUrl();
+    }, []);
+
     const totalPrice = items.reduce((total, item) => {
         return total + Number(item.price)
     }, 0)
 
     const onCheckOut = async () => {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+        const response = await axios.post(`${apiUrl}/checkout`, {
             productIds: items.map((item) => item.id)
-     })
+        })
 
-     window.location = response.data.url
+        window.location = response.data.url
     }
 
     return (

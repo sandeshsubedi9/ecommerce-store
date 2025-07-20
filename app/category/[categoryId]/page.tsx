@@ -2,13 +2,13 @@ import getCategory from '@/actions/get-category'
 import getColors from '@/actions/get-colors'
 import getProducts from '@/actions/get-products'
 import getSizes from '@/actions/get-sizes'
-import Billboard from '@/components/billboard'
 import Container from '@/components/ui/container'
 import React from 'react'
 import Filter from './componets/filter'
 import NoResults from '@/components/ui/no-result'
 import ProductCard from '@/components/ui/product-card'
 import MobileFilters from './componets/mobile-filters'
+import Billboard from '@/components/billboard'
 
 export const revalidate = 0
 

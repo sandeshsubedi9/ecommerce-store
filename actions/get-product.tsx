@@ -1,9 +1,18 @@
-import { Product } from "@/types";
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`
+
+import { Product } from "@/types";
+import { getApiUrlFromCookie } from "./get-apiUrl-from-cookie";
+
+// const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`
 
 const getProduct = async (id:string): Promise<Product> => {
-    const res = await fetch(`${URL}/${id}`)
+    // const apiUrl = useApi()
+
+    const apiUrl = await getApiUrlFromCookie()
+    
+    const URL = `${apiUrl}/products/${id}`
+
+    const res = await fetch(URL)
 
     return res.json()
 }

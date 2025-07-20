@@ -35,7 +35,7 @@ const CartPage = () => {
                         ))}
                     </ul>
                 </div>
-                <Summary />
+                <Summary  />
             </div>
         </div>
       </Container>
