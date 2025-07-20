@@ -3,6 +3,7 @@ import getProducts from '@/actions/get-products'
 import AllBillboards from '@/components/all-billboards'
 import ProductList from '@/components/product-list'
 import Container from '@/components/ui/container'
+import NoValidApi from '@/components/ui/no-valid-api'
 import React from 'react'
 
 export const revalidate = 0
@@ -11,6 +12,14 @@ const HomePage = async () => {
 
   const products = await getProducts({ isFeatured: true })
   const billboard = await getBillboards()
+
+  if (products.length === 0) {
+    return <NoValidApi />
+  }
+
+  if (billboard.length === 0) {
+    return <NoValidApi />
+  }
 
   return (
     <Container>

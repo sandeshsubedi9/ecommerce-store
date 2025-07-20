@@ -9,13 +9,18 @@ const getBillboards = async (): Promise<Billboard[]> => {
 
     const apiUrl = await getApiUrlFromCookie()
 
+    if(!apiUrl) return []
+
     const URL = `${apiUrl}/billboards`
 
     const res = await fetch(URL)
 
+    if(!res.ok) return []
+
     const json = res.json()
 
   return json
+  
 }
 
 export default getBillboards

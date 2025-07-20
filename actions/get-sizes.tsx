@@ -14,9 +14,11 @@ const getSizes = async (): Promise<Size[]> => {
 
     const URL = `${apiUrl}/sizes`
 
-
-
     const res = await fetch(URL)
+
+    if (!res.ok) {
+        return []
+    }
 
     return res.json()
 }

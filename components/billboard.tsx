@@ -1,10 +1,13 @@
 import { Billboard as BillboardType } from "@/types";
+import NoValidApi from "./ui/no-valid-api";
 
 interface BillboardProps {
-  data: BillboardType;
+  data: BillboardType
 }
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
+  if (!data) return <NoValidApi />;
+
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
       <div

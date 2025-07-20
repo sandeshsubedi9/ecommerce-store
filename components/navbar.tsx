@@ -5,11 +5,15 @@ import MainNav from './main-nav'
 import getCategories from '@/actions/get-categories'
 import NavbarActions from './navbar-actions'
 import { StoreName } from './store-name'
+import NoValidApi from './ui/no-valid-api'
 
 export const revalidate = 0
 
 const Navbar = async () => {
     const categories = await getCategories()
+
+    if (!categories || categories.length === 0) return <NoValidApi />
+
     return (
         <div className='border-b'>
             <Container>

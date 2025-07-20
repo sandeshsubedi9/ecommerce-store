@@ -7,6 +7,7 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import { Plus, X } from 'lucide-react';
 import React, { useState } from 'react'
 import Filter from './filter';
+import NoValidApi from '@/components/ui/no-valid-api';
 
 interface MobileFiltersProps {
   sizes: Size[];

@@ -9,6 +9,7 @@ import NoResults from '@/components/ui/no-result'
 import ProductCard from '@/components/ui/product-card'
 import MobileFilters from './componets/mobile-filters'
 import Billboard from '@/components/billboard'
+import NoValidApi from '@/components/ui/no-valid-api'
 
 export const revalidate = 0
 
@@ -31,10 +32,16 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({ params, searchParams 
         colorId: colorId,
         sizeId: sizeId
     })
+    // if (products.length === 0) return <NoValidApi />
 
     const sizes = await getSizes()
+    // if (sizes.length === 0) return <NoValidApi />
+
     const colors = await getColors()
+    // if (colors.length === 0) return <NoValidApi />
+
     const category = await getCategory(categoryId)
+    if (!category) return <NoValidApi />
 
     return (
         <div className='bg-white'>

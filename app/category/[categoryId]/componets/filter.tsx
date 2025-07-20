@@ -7,6 +7,7 @@ import qs from 'query-string'
 import { Color, Size } from '@/types'
 import Button from '@/components/ui/our-button'
 import { cn } from '@/lib/util'
+import NoValidApi from '@/components/ui/no-valid-api'
 
 interface FilterProps {
     data: (Size | Color)[]
@@ -15,6 +16,9 @@ interface FilterProps {
 }
 
 const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
+
+    if (!data.length) return <NoValidApi />
+    
     const searchParams = useSearchParams()
     const router = useRouter()
 

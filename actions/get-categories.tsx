@@ -9,10 +9,6 @@ const getCategories = async (): Promise<Category[]> => {
 
     const apiUrl = await getApiUrlFromCookie()
 
-    if (!apiUrl) {
-        return []
-    }
-
     const URL = `${apiUrl}/categories`
 
     if (!apiUrl) {
@@ -20,6 +16,10 @@ const getCategories = async (): Promise<Category[]> => {
     }
 
     const res = await fetch(URL)
+
+    if (!res.ok) {
+        return []
+    }
 
     return res.json()
 }

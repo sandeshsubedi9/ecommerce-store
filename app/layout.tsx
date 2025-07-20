@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import ModalProvider from "@/providers/modal-provider";
 import { Toaster } from "react-hot-toast";
 import { SetApiCookie } from "@/actions/set-api-url";
+import { Suspense } from "react";
 
 const font = Urbanist({
   subsets: ["latin"],
@@ -26,7 +27,9 @@ export default function RootLayout({
       <body
         className={`${font.className} antialiased`}
       >
+        <Suspense>
           <SetApiCookie />
+        </Suspense>
           <ModalProvider />
           <Toaster />
           <Navbar />
